@@ -1,6 +1,7 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <MaxWidthWrapper>
@@ -9,7 +10,10 @@ export default function Home() {
           Your marketplace for high-quality{" "}
           <span className="text-blue-600">digital assets</span>.
         </h1>
-        <p>Welcome to Digital Buddy</p>
+        <p className="mt-6 text-lg max-w-prose">Welcome to Digital Buddy</p>
+        <Link href="/trending" className={`${buttonVariants()} bg-blue-600`}>
+          Browse Trending
+        </Link>
       </div>
     </MaxWidthWrapper>
   );
