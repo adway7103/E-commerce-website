@@ -1,13 +1,26 @@
+"use client";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { gsap } from "gsap";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 export default function Home() {
+  const comp = useRef(null);
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {}, comp);
+    const t1 = gsap.timeline();
+    t1.from("#title", { xPercent: "-100", duration: 1.3, delay: 3 });
+    return () => ctx.revert();
+  }, []);
   return (
     <MaxWidthWrapper>
-      <div className="py-10 mx-auto flex flex-col items-center max-w-3xl justify-center h-screen">
+      <div
+        className="py-10 mx-auto flex flex-col items-center max-w-3xl justify-center h-screen"
+        id="title"
+        ref={comp}
+      >
         <h1
           className="text-4xl font-bold tracking-normal text-grey-900 sm:text-6xl text-center
         "
